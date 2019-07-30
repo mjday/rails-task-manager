@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>title</title>
+</head>
+
+
+<body>
+  <h1>My tasks</h1>
+
+  <div class="container">
+    <% @tasks.each do |task| %>
+    <div>
+      <%= check_box_tag "completed", task.completed, task.completed  %>
+
+
+    </div>
+    <div>
+      <h3><%= link_to "#{task.title}", task_path(task.id) %></h3>
+
+    </div>
+    <div>
+      <%= link_to "Delete task", task_path(task.id), data: { confirm: "Delete #{task.title}?" }, method: :delete %>
+
+    </div>
+    <% end %>
+
+  <%= link_to "+ Add a new task", new_task_path %>
+  </div>
+
+
+
+</body>
+</html>
+
+
+
+
